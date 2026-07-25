@@ -30,10 +30,10 @@ export default function Home() {
               ดูผลงานบน GitHub
             </a>
             <a
-              href="#skills"
+              href="#projects"
               className="px-6 py-3 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 font-medium border border-slate-700 transition-all"
             >
-              ดูทักษะความสามารถ
+              ดูโปรเจกต์ทั้งหมด
             </a>
           </div>
         </section>
@@ -84,6 +84,66 @@ export default function Home() {
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span> DevOps Fundamentals</li>
                 <li className="flex items-center gap-2"><span className="w-1.5 h-1.5 rounded-full bg-purple-400"></span> VS Code</li>
               </ul>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ================= PROJECTS SECTION ================= */}
+        <section id="projects" className="w-full py-12 border-t border-slate-800 mt-8">
+          <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">
+            Featured Projects (ผลงานเด่น)
+          </h2>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            
+            {/* Project Card 1: Personal Portfolio */}
+            <div className="flex flex-col justify-between p-6 rounded-xl bg-slate-800/40 border border-slate-700/60 hover:border-blue-500/50 transition-all">
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold text-white">Personal Portfolio Website</h3>
+                  <span className="text-xs px-2.5 py-1 rounded-md bg-blue-500/20 text-blue-300 font-mono">Next.js + TS</span>
+                </div>
+                <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                  เว็บไซต์แนะนำตัวและรวบรวมผลงาน ออกแบบด้วยดีไซน์โมเดิร์น รองรับ Responsive บนทุกอุปกรณ์ พัฒนาด้วย Next.js (App Router), TypeScript และ Tailwind CSS
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="text-xs px-2 py-1 rounded bg-slate-700/60 text-slate-300">Next.js</span>
+                  <span className="text-xs px-2 py-1 rounded bg-slate-700/60 text-slate-300">TypeScript</span>
+                  <span className="text-xs px-2 py-1 rounded bg-slate-700/60 text-slate-300">Tailwind CSS</span>
+                  <span className="text-xs px-2 py-1 rounded bg-slate-700/60 text-slate-300">GitHub</span>
+                </div>
+              </div>
+              <a
+                href="https://github.com/YOUR_GITHUB_USERNAME/my-portfolio"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-lg bg-slate-700 hover:bg-slate-600 text-sm font-medium transition-all"
+              >
+                ดู Source Code ใน GitHub ↗
+              </a>
+            </div>
+
+            {/* Project Card 2: Full-stack Web App (โปรเจกต์ถัดไปที่คุณจะทำ) */}
+            <div className="flex flex-col justify-between p-6 rounded-xl bg-slate-800/40 border border-slate-700/60 hover:border-emerald-500/50 transition-all">
+              <div>
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-xl font-bold text-white">Management Web App</h3>
+                  <span className="text-xs px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 font-mono">In Progress</span>
+                </div>
+                <p className="text-slate-400 text-sm mb-6 leading-relaxed">
+                  โปรเจกต์ระบบเว็บแอปพลิเคชันจัดการข้อมูล พัฒนาฝั่ง Frontend ด้วย Vue.js เชื่อมต่อกับ Backend REST API ด้วย Node.js + Express และจัดการฐานข้อมูล MySQL ผ่าน XAMPP
+                </p>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  <span className="text-xs px-2 py-1 rounded bg-slate-700/60 text-slate-300">Vue.js</span>
+                  <span className="text-xs px-2 py-1 rounded bg-slate-700/60 text-slate-300">Node.js</span>
+                  <span className="text-xs px-2 py-1 rounded bg-slate-700/60 text-slate-300">Express</span>
+                  <span className="text-xs px-2 py-1 rounded bg-slate-700/60 text-slate-300">MySQL</span>
+                </div>
+              </div>
+              <span className="inline-flex items-center justify-center w-full py-2.5 rounded-lg bg-slate-800/80 text-slate-500 text-sm font-medium border border-slate-700/40 cursor-not-allowed">
+                ⚙️ กำลังพัฒนาโปรเจกต์...
+              </span>
             </div>
 
           </div>
