@@ -1,55 +1,157 @@
-# Portfolio Project Handoff
+# My Portfolio - Handoff
 
-## Project
+## Project Overview
 
-Personal Portfolio Website
+Personal portfolio website for internship application.
 
-## Owner
+Goal:
+Create a professional portfolio to showcase skills, projects, and experience as a Computer Science student interested in Full Stack Development.
 
-Mew Pakin
-
-## Goal
-
-สร้างเว็บ Portfolio สำหรับสมัครฝึกงาน
 
 ## Tech Stack
 
 - Next.js
 - TypeScript
+- React
 - Tailwind CSS
+- next-themes
+
+
+## Completed
+
+- [x] Initialize Next.js + TypeScript project
+- [x] Setup Tailwind CSS
+- [x] Create component structure
+- [x] Setup Light/Dark mode
+- [x] Create Theme Toggle
+- [x] Create Responsive Navbar
+- [x] Create Hero Section
+- [x] Create About Section
+
+
+## Current Structure
+
+components/
+
+- layout/
+  - Navbar.tsx
+  - ThemeProvider.tsx
+
+- sections/
+  - Hero.tsx
+  - About.tsx
+
+- ui/
+  - ThemeToggle.tsx
+
 
 ## Design Direction
 
-Minimal Developer Portfolio
-
 Style:
+- Minimal
 - Clean
-- White/blue
-- Professional
+- Developer Portfolio
+- Internship focused
 
-Theme:
-- Light mode
-- Dark mode
+Features:
+- Single page website
+- Light/Dark mode
+- Responsive design
+
+
+## Personal Information
+
+Name:
+Mew Pakin
+
+Role:
+Computer Science Student (Year 4)
+
+Goal:
+Full Stack Developer Internship
+
+
+## Skills
+
+Frontend:
+- HTML
+- CSS
+- JavaScript
+- TypeScript
+- React
+- Next.js
+- Vue.js
+
+Backend:
+- Node.js
+- Express.js
+
+Database:
+- MySQL
+
+
+## Projects
+
+### OTOP E-commerce Website
+
+Type:
+Team Project
+
+Role:
+Frontend Developer
+
+Responsibilities:
+- Developed storefront pages
+- Designed database structure
+- Worked with team members
+
+Tech Stack:
+- Vue.js
+- Express.js
+- MySQL
+- XAMPP
+
+
+### Badminton Booking System
+
+Type:
+Team Project
+
+Role:
+UI/UX Designer
+
+Responsibilities:
+- Designed user interface
+- Created design flow
+- Designed prototype
+
+Tool:
+- Figma
+
 
 ## Current Progress
 
 Completed:
-
-[x] Create Next.js project
-[x] Setup TypeScript
-[x] Create folder structure
-
-Current Phase:
-
-Phase 2 - Project Structure
+- Foundation setup
+- Theme system
+- Navbar
+- Hero section
+- About section
 
 Next:
+- Skills Section
+- Projects Section
+- Contact Section
+- Footer
+- Add Resume
+- Add Project screenshots
+- Deploy website
 
-Setup Theme System
 
-## Rules
+## Important Notes
 
-- Use TypeScript
-- Keep components separated
-- Do not put everything in page.tsx
-- Ask before changing architecture
+- Keep components separated by responsibility.
+- Avoid putting large code directly in page.tsx.
+- Use TypeScript.
+- Maintain responsive design.
+- Do not add unconfirmed information.
