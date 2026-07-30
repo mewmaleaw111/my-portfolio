@@ -104,7 +104,8 @@ Responsibilities:
 - Developed storefront pages
 - Designed database structure
 - Worked with team members
-
+   
+   
 Tech Stack:
 - Vue.js
 - Express.js
