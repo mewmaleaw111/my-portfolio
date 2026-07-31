@@ -6,18 +6,19 @@ import Skills from "@/components/sections/Skills";
 import Projects from "@/components/sections/Projects";
 import Contact from "@/components/sections/Contact";
 
+
 export default function Home() {
   return (
-    <main>
-      <Navbar />
+    <main className="min-h-screen bg-slate-100 flex items-center justify-center p-4">
+    {/*   <Navbar /> */}
 
       <Hero />
-      <About />
+     {/*  <About />
       <Skills />
       <Projects />
       <Contact />
       
-      <Footer />
+      <Footer /> */}
     </main>
   );
 }

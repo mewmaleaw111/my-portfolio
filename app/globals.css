@@ -34,3 +34,16 @@ body {
   color: var(--foreground);
   font-family: var(--font-geist-sans), sans-serif;
 }
+
+@import "tailwindcss";
+
+@theme {
+  /* กำหนด keyframes ตรงๆ */
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+  }
+
+  /* ผูก animation เข้ากับ keyframes ด้านบน */
+  --animate-float: float 6s ease-in-out infinite;
+}
