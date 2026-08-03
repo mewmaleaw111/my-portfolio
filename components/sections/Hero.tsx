@@ -11,11 +11,14 @@ export default function Hero() {
           Hello, I'm
         </span>
 
-        <h1 className="group relative cursor-default text-5xl md:text-7xl font-bold text-slate-800 tracking-tight">
-          <span className="inline-block transition-opacity duration-300 group-hover:opacity-0">
+        <h1 className="group relative cursor-pointer text-5xl md:text-7xl font-bold text-slate-800 tracking-tight select-none">
+          {/* ชื่อภาษาอังกฤษ */}
+          <span className="inline-block transition-opacity duration-300 group-hover:opacity-0 group-active:opacity-0">
             MEW Pakin
           </span>
-          <span className="absolute left-0 top-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 text-black-600">
+
+          {/* ชื่อภาษาไทย */}
+          <span className="absolute left-0 top-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100 text-black-600">
             มิว ภาคิน
           </span>
         </h1>
