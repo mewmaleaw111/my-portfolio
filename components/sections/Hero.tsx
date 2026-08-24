@@ -1,10 +1,16 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import { FaFacebookF, FaGithub, FaEnvelope, FaFilePdf } from "react-icons/fa6";
-import { Code2 } from "lucide-react";
+import { Code2, FolderGit2 } from "lucide-react";
+import Projects from "./Projects";
 
 export default function Hero() {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
-    <div className="w-full max-w-6xl flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-20 p-6">
+    <div className="w-full max-w-6xl flex flex-col-reverse md:flex-row items-center justify-between gap-12 md:gap-20 p-6 relative">
       {/* ข้อความและปุ่ม Social ด้านซ้าย */}
       <div className="flex-1 flex flex-col items-center md:items-start text-center md:text-left space-y-6">
         <span className="text-slate-500 font-medium text-base md:text-xl">
@@ -12,13 +18,10 @@ export default function Hero() {
         </span>
 
         <h1 className="group relative cursor-pointer text-5xl md:text-7xl font-bold text-slate-800 tracking-tight select-none">
-          {/* ชื่อภาษาอังกฤษ */}
           <span className="inline-block transition-opacity duration-300 group-hover:opacity-0 group-active:opacity-0">
             MEW Pakin
           </span>
-
-          {/* ชื่อภาษาไทย */}
-          <span className="absolute left-0 top-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100 text-black-600">
+          <span className="absolute left-0 top-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-active:opacity-100 text-slate-900">
             มิว ภาคิน
           </span>
         </h1>
@@ -32,49 +35,59 @@ export default function Hero() {
           <div className="h-[2px] flex-1 bg-slate-300 hidden md:block"></div>
         </div>
 
-        {/* ปุ่ม Social Links & Resume */}
-        <div className="flex items-center gap-4 pt-2">
-          <a
-            href="https://www.facebook.com/pakin.chuerkratok/"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Facebook"
-            className="w-14 h-14 bg-white hover:bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-center text-blue-600 shadow-sm transition-transform active:scale-95 hover:-translate-y-0.5"
-          >
-            <FaFacebookF className="w-6 h-6" />
-          </a>
+        {/* Social Icons & ปุ่มผลงาน */}
+        <div className="flex flex-col items-center md:items-start gap-4 pt-2">
+          <div className="flex items-center gap-4">
+            <a
+              href="https://www.facebook.com/pakin.chuerkratok/"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook"
+              className="w-14 h-14 bg-white hover:bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-center text-blue-600 shadow-sm transition-transform active:scale-95 hover:-translate-y-0.5"
+            >
+              <FaFacebookF className="w-6 h-6" />
+            </a>
 
-          <a
-            href="https://github.com/mewmaleaw111"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="GitHub"
-            className="w-14 h-14 bg-white hover:bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-center text-slate-800 shadow-sm transition-transform active:scale-95 hover:-translate-y-0.5"
-          >
-            <FaGithub className="w-6 h-6" />
-          </a>
+            <a
+              href="https://github.com/mewmaleaw111"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="GitHub"
+              className="w-14 h-14 bg-white hover:bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-center text-slate-800 shadow-sm transition-transform active:scale-95 hover:-translate-y-0.5"
+            >
+              <FaGithub className="w-6 h-6" />
+            </a>
 
-          <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=mui0033@gmail.com&su=Contact+from+Portfolio"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Email"
-            className="w-14 h-14 bg-white hover:bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-center text-red-500 shadow-sm transition-transform active:scale-95 hover:-translate-y-0.5"
-          >
-            <FaEnvelope className="w-6 h-6" />
-          </a>
+            <a
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=mui0033@gmail.com&su=Contact+from+Portfolio"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Email"
+              className="w-14 h-14 bg-white hover:bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-center text-red-500 shadow-sm transition-transform active:scale-95 hover:-translate-y-0.5"
+            >
+              <FaEnvelope className="w-6 h-6" />
+            </a>
 
-          {/* ปุ่ม Resume PDF */}
-          <a
-            href="/Pakin-Resume.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Resume"
-            title="View Resume"
-            className="w-14 h-14 bg-white hover:bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-center text-rose-600 shadow-sm transition-transform active:scale-95 hover:-translate-y-0.5"
+            <a
+              href="/Pakin-Resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Resume"
+              title="View Resume"
+              className="w-14 h-14 bg-white hover:bg-slate-50 border border-slate-200/80 rounded-2xl flex items-center justify-center text-rose-600 shadow-sm transition-transform active:scale-95 hover:-translate-y-0.5"
+            >
+              <FaFilePdf className="w-6 h-6" />
+            </a>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setIsModalOpen(true)}
+            className="flex items-center gap-2.5 px-6 py-3 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-medium shadow-md shadow-slate-900/10 transition-all active:scale-95 hover:-translate-y-0.5 cursor-pointer"
           >
-            <FaFilePdf className="w-6 h-6" />
-          </a>
+            <FolderGit2 className="w-5 h-5 text-slate-300" />
+            <span>ดูผลงาน (Projects)</span>
+          </button>
         </div>
       </div>
 
@@ -96,6 +109,12 @@ export default function Hero() {
           <span>pakin.com</span>
         </div>
       </div>
+
+      {/* เรียกใช้งาน Projects Modal */}
+      <Projects
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+      />
     </div>
   );
 }
