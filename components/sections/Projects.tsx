@@ -81,6 +81,28 @@ export const projectsData: ProjectItem[] = [
     githubUrl: "https://github.com/mewmaleaw111/my-portfolio",
   },
   {
+    title: "SHOPEASE - แอปพลิเคชันตลาดซื้อขายสินค้าออนไลน์",
+    subtitle: "Group Project",
+    description:
+      "ออกแบบ UI/UX สำหรับแอปพลิเคชัน E-Commerce ครบวงจร (แนว Shopee) ร่วมกับทีม วางโครงสร้างระบบค้นหาสินค้า ตะกร้า และระบบชำระเงินที่เน้นประสบการณ์การใช้งานที่ลื่นไหลและเข้าใจง่าย",
+    highlights: [
+      "วิเคราะห์และวาง User Flow / Information Architecture ตั้งแต่หน้าแรกจนถึงขั้นตอน Checkout",
+      "ออกแบบ High-Fidelity UI และสร้าง Interactive Prototype เสมือนแอปจริงบน Figma",
+      "จัดทำ Design System, Color Palette, Typography และ Reusable Components ร่วมกับทีมเพื่อความสม่ำเสมอของงาน",
+    ],
+    tags: [
+      "Figma",
+      "UI/UX Design",
+      "E-Commerce",
+      "Interactive Prototype",
+      "Design System",
+      "User Flow",
+      "Teamwork",
+    ],
+    figmaUrl:
+      "https://www.figma.com/design/J7fIOAdncutR426QhcSOAB/Untitled?node-id=0-1&t=HbDvEXdWSmsFEpV7-1",
+  },
+  {
     title: "ออกแบบ UI/UX แอปร้านขายไก่",
     subtitle: "Group Project (Team 6)",
     description:
@@ -155,7 +177,7 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
           </button>
         </div>
 
-        {/* จุด Scroll: บังคับ GPU Composited Scrolling สำหรับ Trackpad */}
+        {/* จุด Scroll (รันบน GPU Composited Scrolling เพื่อความลื่นไหล) */}
         <div
           className="overflow-y-auto overscroll-contain pr-1 md:pr-2 space-y-4"
           style={{
