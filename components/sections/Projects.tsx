@@ -102,7 +102,6 @@ interface ProjectsProps {
 }
 
 export default function Projects({ isOpen, onClose }: ProjectsProps) {
-  // ล็อกไม่ให้หน้าหลักเลื่อนตามขณะเปิด Pop-up
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -118,15 +117,16 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* Backdrop แยกเลเยอร์อิสระเพื่อความลื่น 60+ FPS */}
+      {/* Background Overlay */}
       <div
-        className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+        className="fixed inset-0 bg-slate-950/70 animate-in fade-in duration-200"
         onClick={onClose}
       />
 
-      {/* กล่อง Pop-up หลัก */}
+      {/* Modal Container */}
       <div
-        className="relative z-10 w-full max-w-4xl max-h-[85vh] bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100 flex flex-col transform-gpu animate-in fade-in zoom-in-95 duration-200 ease-out"
+        className="relative z-10 w-full max-w-4xl max-h-[85vh] bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100 flex flex-col animate-in fade-in zoom-in-95 duration-200 ease-out"
+        style={{ transform: "translateZ(0)" }}
         onClick={(e) => e.stopPropagation()}
       >
         {/* Header */}
@@ -155,13 +155,21 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
           </button>
         </div>
 
-        {/* จุด Scroll */}
-        <div className="overflow-y-auto overscroll-contain pr-1 md:pr-2 space-y-4 transform-gpu [will-change:transform]">
+        {/* จุด Scroll: บังคับ GPU Composited Scrolling สำหรับ Trackpad */}
+        <div
+          className="overflow-y-auto overscroll-contain pr-1 md:pr-2 space-y-4"
+          style={{
+            willChange: "scroll-position",
+            transform: "translate3d(0, 0, 0)",
+            WebkitOverflowScrolling: "touch",
+          }}
+        >
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">
             {projectsData.map((item, index) => (
               <div
                 key={index}
-                className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 md:p-6 flex flex-col justify-between transition-shadow hover:shadow-md space-y-4"
+                className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 md:p-6 flex flex-col justify-between hover:border-slate-300 hover:bg-slate-100/50 transition-colors duration-150 space-y-4"
+                style={{ transform: "translateZ(0)" }}
               >
                 <div>
                   <div className="flex flex-wrap items-center gap-2 mb-1.5">
@@ -196,7 +204,7 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
                     {item.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="text-[11px] font-medium bg-white text-slate-700 border border-slate-200 px-2.5 py-0.5 rounded-md shadow-xs"
+                        className="text-[11px] font-medium bg-white text-slate-700 border border-slate-200 px-2.5 py-0.5 rounded-md"
                       >
                         {tag}
                       </span>
@@ -211,7 +219,7 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
                       href={item.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium rounded-xl transition-transform active:scale-95 shadow-sm"
+                      className="flex-1 flex items-center justify-center gap-2 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium rounded-xl transition-colors active:scale-95 shadow-sm"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>Live Demo</span>
@@ -223,7 +231,7 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
                       href={item.figmaUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium rounded-xl transition-transform active:scale-95 shadow-sm"
+                      className="flex-1 flex items-center justify-center gap-2 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium rounded-xl transition-colors active:scale-95 shadow-sm"
                     >
                       <FaFigma className="w-3.5 h-3.5 text-purple-400" />
                       <span>Figma</span>
@@ -235,7 +243,7 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
                       href={item.githubUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 flex items-center justify-center gap-2 px-3.5 py-2 bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 text-xs font-medium rounded-xl transition-transform active:scale-95 shadow-sm"
+                      className="flex-1 flex items-center justify-center gap-2 px-3.5 py-2 bg-white hover:bg-slate-100 text-slate-800 border border-slate-200 text-xs font-medium rounded-xl transition-colors active:scale-95 shadow-sm"
                     >
                       <FaGithub className="w-3.5 h-3.5" />
                       <span>GitHub</span>
