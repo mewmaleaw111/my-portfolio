@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
-import { FaGithub } from "react-icons/fa6";
+import { FaGithub, FaFigma } from "react-icons/fa6";
 import { ExternalLink, X, FolderGit2 } from "lucide-react";
 
 export interface ProjectItem {
@@ -12,6 +12,7 @@ export interface ProjectItem {
   tags: string[];
   liveUrl?: string;
   githubUrl?: string;
+  figmaUrl?: string;
 }
 
 export const projectsData: ProjectItem[] = [
@@ -79,6 +80,20 @@ export const projectsData: ProjectItem[] = [
     liveUrl: "https://my-portfolio-delta-mauve-47.vercel.app/",
     githubUrl: "https://github.com/mewmaleaw111/my-portfolio",
   },
+  {
+    title: "ออกแบบ UI/UX แอปร้านขายไก่",
+    subtitle: "Group Project (Team 6)",
+    description:
+      "ออกแบบ UI/UX สำหรับแอปพลิเคชันร้านขายไก่บน Figma โดยทำงานร่วมกับเพื่อนในทีม 5 คน แบ่งหน้าที่รับผิดชอบแต่ละส่วน และนำ Flow งานมารวมกันเป็นแอปพลิเคชันที่สมบูรณ์",
+    highlights: [
+      "ออกแบบ UI/UX และสร้าง Wireframe ครบทุกฟังก์ชันบน Figma",
+      "ทำงานร่วมกันเป็นทีม (Teamwork) 6 คน แบ่งส่วนดีไซน์และเชื่อมโยงระบบเข้าด้วยกัน",
+      "ออกแบบ Flow ขั้นตอนการสั่งซื้อและการใช้งานให้เข้าใจง่ายและเป็นมิตรต่อผู้ใช้",
+    ],
+    tags: ["Figma", "UI/UX Design", "Wireframe", "Prototype", "Teamwork"],
+    figmaUrl:
+      "https://www.figma.com/design/ziiqSQaf0yOekRhMee9wTe/Untitled?node-id=0-1&p=f",
+  },
 ];
 
 interface ProjectsProps {
@@ -87,7 +102,7 @@ interface ProjectsProps {
 }
 
 export default function Projects({ isOpen, onClose }: ProjectsProps) {
-  // ล็อกไม่ให้หน้าเว็บด้านหลังเลื่อนตามขณะเปิด Pop-up
+  // ล็อกไม่ให้หน้าหลักเลื่อนตามขณะเปิด Pop-up
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -103,18 +118,18 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
-      {/* 1. แยก Backdrop ออกเป็น Layer อิสระ (ไม่ให้เอฟเฟกต์เบลอกวน Scroll Container) */}
+      {/* Backdrop แยกเลเยอร์อิสระเพื่อความลื่น 60+ FPS */}
       <div
         className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
         onClick={onClose}
       />
 
-      {/* 2. กล่อง Pop-up หลัก */}
+      {/* กล่อง Pop-up หลัก */}
       <div
         className="relative z-10 w-full max-w-4xl max-h-[85vh] bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100 flex flex-col transform-gpu animate-in fade-in zoom-in-95 duration-200 ease-out"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Modal Header */}
+        {/* Header */}
         <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4 shrink-0">
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-slate-100 rounded-2xl text-slate-700">
@@ -125,7 +140,7 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
                 ผลงานทั้งหมด (Projects)
               </h2>
               <p className="text-xs md:text-sm text-slate-500">
-                โปรเจกต์ที่ Deploy แล้วและซอร์สโค้ดบน GitHub
+                โปรเจกต์ที่พัฒนา, ผลงาน UI/UX บน Figma และซอร์สโค้ดบน GitHub
               </p>
             </div>
           </div>
@@ -140,7 +155,7 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
           </button>
         </div>
 
-        {/* 3. จุด Scroll: เพิ่ม overscroll-contain, -webkit-overflow-scrolling และ transform-gpu */}
+        {/* จุด Scroll */}
         <div className="overflow-y-auto overscroll-contain pr-1 md:pr-2 space-y-4 transform-gpu [will-change:transform]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">
             {projectsData.map((item, index) => (
@@ -200,6 +215,18 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
                       <span>Live Demo</span>
+                    </a>
+                  )}
+
+                  {item.figmaUrl && (
+                    <a
+                      href={item.figmaUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 flex items-center justify-center gap-2 px-3.5 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-medium rounded-xl transition-transform active:scale-95 shadow-sm"
+                    >
+                      <FaFigma className="w-3.5 h-3.5 text-purple-400" />
+                      <span>Figma</span>
                     </a>
                   )}
 
