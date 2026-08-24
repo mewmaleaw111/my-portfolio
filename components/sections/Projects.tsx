@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import { FaGithub } from "react-icons/fa6";
 import { ExternalLink, X, FolderGit2 } from "lucide-react";
 
@@ -86,19 +87,34 @@ interface ProjectsProps {
 }
 
 export default function Projects({ isOpen, onClose }: ProjectsProps) {
+  // ล็อกไม่ให้หน้าเว็บด้านหลังเลื่อนตามขณะเปิด Pop-up
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "unset";
+    }
+    return () => {
+      document.body.style.overflow = "unset";
+    };
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/50 backdrop-blur-sm p-4 animate-in fade-in duration-200"
-      onClick={onClose}
-    >
-      {/* กล่อง Pop-up หลัก */}
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+      {/* 1. แยก Backdrop ออกเป็น Layer อิสระ (ไม่ให้เอฟเฟกต์เบลอกวน Scroll Container) */}
       <div
-        className="relative w-full max-w-4xl max-h-[85vh] bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100 flex flex-col"
+        className="fixed inset-0 bg-slate-900/50 backdrop-blur-xs transition-opacity animate-in fade-in duration-200"
+        onClick={onClose}
+      />
+
+      {/* 2. กล่อง Pop-up หลัก */}
+      <div
+        className="relative z-10 w-full max-w-4xl max-h-[85vh] bg-white rounded-3xl p-6 md:p-8 shadow-2xl border border-slate-100 flex flex-col transform-gpu animate-in fade-in zoom-in-95 duration-200 ease-out"
         onClick={(e) => e.stopPropagation()}
       >
-        {/* Modal Header ตรึงอยู่กับที่ไม่เลื่อนตาม */}
+        {/* Modal Header */}
         <div className="flex items-center justify-between border-b border-slate-100 pb-4 mb-4 shrink-0">
           <div className="flex items-center gap-3">
             <div className="p-2.5 bg-slate-100 rounded-2xl text-slate-700">
@@ -124,13 +140,13 @@ export default function Projects({ isOpen, onClose }: ProjectsProps) {
           </button>
         </div>
 
-        {/* ส่วนเนื้อหาผลงานที่ Scroll เลื่อนขึ้น-ลงได้ */}
-        <div className="overflow-y-auto pr-1 md:pr-2 space-y-4">
+        {/* 3. จุด Scroll: เพิ่ม overscroll-contain, -webkit-overflow-scrolling และ transform-gpu */}
+        <div className="overflow-y-auto overscroll-contain pr-1 md:pr-2 space-y-4 transform-gpu [will-change:transform]">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pb-2">
             {projectsData.map((item, index) => (
               <div
                 key={index}
-                className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 md:p-6 flex flex-col justify-between transition-all hover:shadow-md space-y-4"
+                className="bg-slate-50 border border-slate-200/80 rounded-2xl p-5 md:p-6 flex flex-col justify-between transition-shadow hover:shadow-md space-y-4"
               >
                 <div>
                   <div className="flex flex-wrap items-center gap-2 mb-1.5">
